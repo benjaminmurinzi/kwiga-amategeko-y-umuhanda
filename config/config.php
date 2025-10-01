@@ -79,3 +79,33 @@ require_once INCLUDES_PATH . '/functions.php';
 require_once INCLUDES_PATH . '/session.php';
 
 // Auto-load classes
+spl_autoload_register(function ($class_name) {
+    $file = CLASSES_PATH . '/' . $class_name . '.php';
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
+// Initialize database connection
+$database = new Database();
+$db = $database->getConnection();
+
+// Set current language
+if (!isset($_SESSION['language'])) {
+    $_SESSION['language'] = DEFAULT_LANGUAGE;
+}
+
+// Load language file
+require_once ROOT_PATH . '/languages/' . $_SESSION['language'] . '.php';
+
+/**
+ * Get configuration value
+ * @param string $key Configuration key
+ * @param mixed $default Default value if key not found
+ * @return mixed Configuration value
+ */
+function config($key, $default = null) {
+    $constants = get_defined_constants(true)['user'];
+    return $constants[$key] ?? $default;
+}
+?>
