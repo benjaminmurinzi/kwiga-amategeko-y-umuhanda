@@ -1,0 +1,173 @@
+# Traffic Rules Learning Platform - Complete Project Structure
+
+## 📁 Directory Structure
+```
+traffic-learning-platform/
+│
+├── config/
+│   ├── database.php          # Database configuration
+│   ├── config.php             # General settings
+│   └── language.php           # Language settings
+│
+├── includes/
+│   ├── functions.php          # Helper functions
+│   ├── session.php            # Session management
+│   └── auth.php               # Authentication functions
+│
+├── classes/
+│   ├── Database.php           # Database connection class
+│   ├── User.php               # User management
+│   ├── Subscription.php       # Subscription handling
+│   ├── Lesson.php             # Lesson management
+│   ├── Quiz.php               # Quiz management
+│   ├── Payment.php            # Payment processing
+│   └── DrivingSchool.php      # Driving school management
+│
+├── languages/
+│   ├── en.php                 # English translations
+│   └── rw.php                 # Kinyarwanda translations
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css          # Main styles
+│   │   └── admin.css          # Admin styles
+│   ├── js/
+│   │   ├── main.js            # Main JavaScript
+│   │   ├── quiz.js            # Quiz functionality
+│   │   └── admin.js           # Admin functionality
+│   └── images/
+│       ├── logo.png
+│       └── traffic-signs/     # Road sign images
+│
+├── public/
+│   ├── index.php              # Landing page
+│   ├── register.php           # Registration
+│   ├── login.php              # Login
+│   └── dashboard.php          # User dashboard
+│
+├── learner/
+│   ├── dashboard.php          # Learner dashboard
+│   ├── lessons.php            # View lessons
+│   ├── lesson-view.php        # Single lesson view
+│   ├── quizzes.php            # Practice quizzes
+│   ├── mock-exam.php          # Mock exams
+│   ├── progress.php           # Progress tracking
+│   └── subscription.php       # Manage subscription
+│
+├── school/
+│   ├── dashboard.php          # School dashboard
+│   ├── students.php           # Manage students
+│   ├── add-student.php        # Register students
+│   ├── student-progress.php   # Track student progress
+│   ├── analytics.php          # Performance analytics
+│   └── subscription.php       # School subscription
+│
+├── admin/
+│   ├── dashboard.php          # Admin dashboard
+│   ├── users.php              # Manage users
+│   ├── schools.php            # Manage schools
+│   ├── lessons.php            # Manage lessons
+│   ├── quizzes.php            # Manage quizzes
+│   ├── payments.php           # Payment records
+│   ├── analytics.php          # Platform analytics
+│   └── settings.php           # System settings
+│
+├── api/
+│   ├── payment-callback.php   # Payment gateway callbacks
+│   ├── quiz-submit.php        # Quiz submission endpoint
+│   └── progress-update.php    # Progress update endpoint
+│
+└── sql/
+    └── database.sql           # Database schema
+```
+
+## 🗄️ Database Schema Overview
+
+### Users Table
+- id, email, password, user_type (learner/school/admin)
+- first_name, last_name, phone
+- language_preference, created_at, updated_at
+
+### Subscriptions Table
+- id, user_id, plan_type, start_date, end_date
+- payment_status, amount, payment_method
+
+### Driving Schools Table
+- id, user_id, school_name, registration_number
+- address, contact_person, phone, email
+
+### School Students Table
+- id, school_id, student_user_id, enrolled_at
+- status (active/inactive)
+
+### Lessons Table
+- id, title_en, title_rw, content_en, content_rw
+- category, order, image_url, created_at
+
+### Quizzes Table
+- id, lesson_id, title_en, title_rw
+- quiz_type (practice/mock), duration_minutes
+
+### Questions Table
+- id, quiz_id, question_en, question_rw
+- option_a_en, option_a_rw, option_b_en, option_b_rw
+- option_c_en, option_c_rw, option_d_en, option_d_rw
+- correct_answer, explanation_en, explanation_rw
+
+### Quiz Attempts Table
+- id, user_id, quiz_id, score, total_questions
+- started_at, completed_at, time_taken
+
+### Progress Tracking Table
+- id, user_id, lesson_id, completed
+- completion_date, time_spent
+
+### Payments Table
+- id, user_id, amount, payment_method
+- transaction_id, status, created_at
+
+## 🚀 Development Phases
+
+### Phase 1: Foundation (Days 1-3)
+- [ ] Set up database and tables
+- [ ] Create configuration files
+- [ ] Build authentication system
+- [ ] Implement language switching
+
+### Phase 2: Core Features (Days 4-7)
+- [ ] User registration & login
+- [ ] Lesson management system
+- [ ] Quiz system with instant feedback
+- [ ] Progress tracking
+
+### Phase 3: Payment Integration (Days 8-10)
+- [ ] Subscription management
+- [ ] Mobile Money integration
+- [ ] Payment callback handling
+- [ ] Subscription expiry notifications
+
+### Phase 4: School Portal (Days 11-13)
+- [ ] School registration
+- [ ] Student management
+- [ ] Progress tracking dashboard
+- [ ] Analytics reports
+
+### Phase 5: Admin Panel (Days 14-16)
+- [ ] Admin dashboard
+- [ ] Content management
+- [ ] User management
+- [ ] Payment tracking
+
+### Phase 6: Polish & Testing (Days 17-20)
+- [ ] Mobile responsiveness
+- [ ] Security hardening
+- [ ] Performance optimization
+- [ ] Testing and bug fixes
+
+## 📝 Next Steps
+1. I'll create the database schema SQL file
+2. Configuration files for easy setup
+3. Core authentication system
+4. Then we'll build each module step by step
+
+Ready to start? I'll begin with the database schema and setup files!
