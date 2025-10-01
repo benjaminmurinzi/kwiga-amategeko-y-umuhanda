@@ -66,3 +66,4 @@ class Database {
 //     echo "Database connection failed!";
 // }
 ?>
+
